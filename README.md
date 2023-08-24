@@ -12,7 +12,7 @@ To demonstrate a bit of my skills.
 To inspire others.
 I hope you enjoy it!
 
-All the best! 🤜🤛
+All the best! 🤜💥🤛
 
 Juanma
 

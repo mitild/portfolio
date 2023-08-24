@@ -1,6 +1,6 @@
 # Welcome to my Portfolio 👋
 
-As a Frontend Developer with a background in Graphic Design, I believed it would be a good idea to combine both professional aspects in one place, My Portfolio.
+As a Frontend Developer with a background in Graphic Design, I believed it would be a good idea to combine both professional aspects in one place, My Portfolio 🤳
 
 You will find here my most relevant experience from the last few years, and I will try to keep updating the website with my latest projects and works.
 
@@ -12,7 +12,7 @@ To demonstrate a bit of my skills.
 To inspire others.
 I hope you enjoy it!
 
-All the best!
+All the best! 🤜🤛
 
 Juanma
 

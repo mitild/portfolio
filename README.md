@@ -6,10 +6,11 @@ You will find here my most relevant experience from the last few years, and I wi
 
 My goals in creating this app have been:
 
-To allow you to get to know me better, bringing together all my experience and passion in one place.
-To showcase my voice and design style.
-To demonstrate a bit of my skills.
-To inspire others.
+- To allow you to get to know me better, bringing together all my experience and passion in one place.
+- To showcase my voice and design style.
+- To demonstrate a bit of my skills.
+- To inspire others.
+
 I hope you enjoy it!
 
 All the best! 🤜💥🤛

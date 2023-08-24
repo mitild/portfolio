@@ -16,4 +16,6 @@ All the best! 🤜🤛
 
 Juanma
 
-## Expanding the ESLint configuration
+## Software
+
+#ReactJS #TypeScript #ViteJS #NPM #Git #Vitest #Jest #React-Router-Dom #Framer-Motion #Styled-Components

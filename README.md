@@ -1,4 +1,4 @@
-# Welcome to my Portfolio
+# Welcome to my Portfolio 👋
 
 As a Frontend Developer with a background in Graphic Design, I believed it would be a good idea to combine both professional aspects in one place, My Portfolio.
 

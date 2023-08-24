@@ -1,0 +1,47 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: "Neue Machina";
+  src: url(./fonts/PPNeueMachina-PlainRegular.otf) format("opentype");
+  font-style: normal;
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: "Neue Machina";
+  src: url(./fonts/PPNeueMachina-InktrapUltrabold.otf) format("opentype");
+  font-style: normal;
+  font-weight: 800;
+}
+
+:root {
+  font-family: 'Space Grotesk', Neue Machina, Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  /* line-height: 1.5; */
+  font-weight: 400;
+  font-style: normal;
+
+  color-scheme: light dark;
+  color: rgba(207, 255, 147, .9);
+  background: linear-gradient(180deg, #1C2023 58.85%, #171A1D 100%);
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  overflow-x: hidden;
+  min-width: 320px;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  object-fit: cover;
+}

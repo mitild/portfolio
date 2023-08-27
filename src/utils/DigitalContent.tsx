@@ -66,12 +66,12 @@ export const DigitalContent: TDigital[] = [
     alt: "Estudio Hoyt's logo on perspective game"
   },
   {
-    name: "",
+    name: "Pary!",
     src: "/digital/d13.png",
     alt: "Mona Negra's poster"
   },
   {
-    name: "",
+    name: "Fresssh",
     src: "/digital/d14.png",
     alt: "Fauna's popup event menu"
   },

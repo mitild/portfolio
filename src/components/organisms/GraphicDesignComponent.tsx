@@ -84,8 +84,6 @@ export const GraphicDesignComponent: FC = () => {
 
   const digitalContentThumbnails: TImages = DigitalContent.map(({ src, alt, name }) => ({ src: src, alt: alt, name: name }))
 
-
-console.log(brandingThumbnails)
   return (
     <Container direction="column" gap="0" align="center" justify="center">  
       <BlurryCircle color="primary" XPositionLaptop="-15%" YPositionLaptop="-100%"/>
@@ -105,11 +103,11 @@ console.log(brandingThumbnails)
       <TextStyled fontFamily="Neue Machina" fontSize={ fonts.h2 } fontWeight={ fonts.bold2}>
         Branding & Digital Presence
       </TextStyled>
-      <Carousel images={ brandingThumbnails } />
+      <Carousel images={ brandingThumbnails } id="branding" />
       <TextStyled fontFamily="Neue Machina" fontSize={ fonts.h2 } fontWeight={ fonts.bold2}>
         Digital Content
       </TextStyled>
-      <Carousel images={ digitalContentThumbnails } />
+      <Carousel images={ digitalContentThumbnails } id="digital" />
       <CardsWrapper direction="row" gap="1rem" align="center" justify="center">
       </CardsWrapper>
     </Container>

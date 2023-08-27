@@ -130,19 +130,16 @@ export const Carousel: FC<TCarouselProps> = ({ images, id }) => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
+  
+
   console.log(innerCarouselRef?.current?.getBoundingClientRect())
   const handleSlider = (direction: string) => {
-    const distance = innerCarouselRef?.current?.getBoundingClientRect().x
-    console.log(windowWidth - distance!)
+
     if(direction === 'left') {
-      const test = distance! + windowWidth
-      console.log(test)
-      innerCarouselRef.current!.style.transform = `translateX(${distance! + windowWidth}px)`
+      innerCarouselRef!.current!.scrollLeft -= 400
       }
       else {
-        const test = distance! - windowWidth
-        console.log(test)
-        innerCarouselRef.current!.style.transform = `translateX(${distance! - windowWidth}px)` 
+        innerCarouselRef!.current!.scrollLeft += 400
     }
   }  
   

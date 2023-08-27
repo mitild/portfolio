@@ -16,7 +16,7 @@ const CarouselContainer = styled(FlexBox)`
 `
 
 const InnerCarousel = styled(FlexBox)<TCarouselContainer>`
-  min-width: ${({ carousel_width }) => (carousel_width) + 'px'};
+  min-width: max-content;
   cursor: grab;
 `
 

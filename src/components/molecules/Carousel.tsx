@@ -97,6 +97,8 @@ const ArrowRight = styled(ArrowLeft)`
   }
 `
 
+let translateIndex = 0
+
 export type TImages = {
   src: string;
   name?: string;
@@ -130,21 +132,31 @@ export const Carousel: FC<TCarouselProps> = ({ images, id }) => {
     return () => window.removeEventListener('resize', handleResize)
   }, [])
 
-  console.log(innerCarouselRef?.current?.getBoundingClientRect())
+  
   const handleSlider = (direction: string) => {
     const distance = innerCarouselRef?.current?.getBoundingClientRect().x
-    console.log(windowWidth - distance!)
-    if(direction === 'left') {
-      const test = distance! + windowWidth
-      console.log(test)
+    
+    if(direction === 'left' && translateIndex > 0) {
       innerCarouselRef.current!.style.transform = `translateX(${distance! + windowWidth}px)`
+      translateIndex --
+     
       }
-      else {
-        const test = distance! - windowWidth
-        console.log(test)
+      else if(direction === 'right') {  
         innerCarouselRef.current!.style.transform = `translateX(${distance! - windowWidth}px)` 
+        translateIndex ++
+        if(innerCarouselRef!.current!.getBoundingClientRect().right < windowWidth) {
+          console.log("right")
+          innerCarouselRef.current!.style.transform = `translateX(0)`
+          translateIndex = 0
+        }
     }
+    
+    if (translateIndex === 0) {
+      innerCarouselRef.current!.style.transform = `translateX(0)`
+    }
+    console.log(translateIndex)
   }  
+
   
   return (
     <CarouselContainer 

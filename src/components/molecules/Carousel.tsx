@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useRef, FC, HTMLAttributes, useEffect } from "react" 
 import styled from "styled-components"
 import { motion } from "framer-motion"
@@ -97,8 +98,6 @@ const ArrowRight = styled(ArrowLeft)`
   }
 `
 
-let translateIndex = 0
-
 export type TImages = {
   src: string;
   name?: string;
@@ -111,52 +110,64 @@ type TCarouselProps = HTMLAttributes<HTMLDivElement> & {
 }
 
 export const Carousel: FC<TCarouselProps> = ({ images, id }) => {
-  const [ width, setWidth ] = useState(0)
-  const [ windowWidth, setWindowWidth ] = useState(window.innerWidth)
+  const [ windowWidth, setWindowWidth ] = useState<number>(window.innerWidth)
   const [ isHovered, setIsHovered ] = useState(false)
-  const [ translateX, setTranslateX ] = useState(400)
   const imageWidth = windowWidth > 960 ? 400 : 300
   const carouselRef = useRef<HTMLDivElement>(null)
   const innerCarouselRef = useRef<HTMLDivElement>(null)
   const innerWidth: number = images.length * (imageWidth + 8)
 
+function debounce<T extends unknown[]>(
+  func: (...args: T) => void,
+  delay: number
+) {
+  let timeoutId: ReturnType<typeof setTimeout>;
+
+  return function (this: unknown, ...args: T) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+}
+
   const handleResize = () => {
     setWindowWidth(window.innerWidth)
-    const carousel = carouselRef?.current
-    setWidth(carousel!.scrollWidth - carousel!.offsetWidth)
   }
 
+  const debouncedHandleResize = debounce(handleResize, 200)
+
   useEffect(() => {
-    window.addEventListener('resize', handleResize)
+    window.addEventListener('resize', debouncedHandleResize)
 
-    return () => window.removeEventListener('resize', handleResize)
-  }, [])
+    return () => window.removeEventListener('resize', debouncedHandleResize)
+  }, [debouncedHandleResize])
 
-  
   const handleSlider = (direction: string) => {
-    const distance = innerCarouselRef?.current?.getBoundingClientRect().x
-    
-    if(direction === 'left' && translateIndex > 0) {
-      innerCarouselRef.current!.style.transform = `translateX(${distance! + windowWidth}px)`
-      translateIndex --
-     
-      }
-      else if(direction === 'right') {  
-        innerCarouselRef.current!.style.transform = `translateX(${distance! - windowWidth}px)` 
-        translateIndex ++
-        if(innerCarouselRef!.current!.getBoundingClientRect().right < windowWidth) {
-          console.log("right")
-          innerCarouselRef.current!.style.transform = `translateX(0)`
-          translateIndex = 0
-        }
-    }
-    
-    if (translateIndex === 0) {
+    const carousel = innerCarouselRef!.current
+    const clientLeft = carousel!.getBoundingClientRect().left
+    const clientRight = carousel!.getBoundingClientRect().right
+
+    if(clientLeft > 0) {
       innerCarouselRef.current!.style.transform = `translateX(0)`
     }
-    console.log(translateIndex)
-  }  
+    if(clientRight < windowWidth) {
+      innerCarouselRef.current!.style.transform = `translateX(0)`
+    }
+    if(direction === 'left' && clientLeft < 0) {
+      const newPosition = Math.min(0, clientLeft + windowWidth)
+      innerCarouselRef.current!.style.transform = `translateX(${newPosition}px)`
+      
+    }
+    else if(direction === 'right' && clientRight > windowWidth) {
+      const additional = windowWidth > 960 ? 300 : 200
+      const newPosition = Math.max(-innerWidth + windowWidth - additional, clientLeft - windowWidth - additional)
+      innerCarouselRef.current!.style.transform = `translateX(${newPosition}px)`
+    }
 
+  }
+  
+  const debouncedHandleSlider = debounce(handleSlider, 200)
   
   return (
     <CarouselContainer 
@@ -168,7 +179,7 @@ export const Carousel: FC<TCarouselProps> = ({ images, id }) => {
       ref={ carouselRef }
     >
       <ArrowLeft
-        onClick={ () => handleSlider('left') }
+        onClick={ () => debouncedHandleSlider('left') }
       > {'<'} 
       </ArrowLeft>
       <InnerCarousel 
@@ -197,7 +208,6 @@ export const Carousel: FC<TCarouselProps> = ({ images, id }) => {
               </TextStyled>
             }
             <CarouselItem  
-              // key={ index }
               src={src} 
               alt={`${name} cover`} 
               img_width={ imageWidth }
@@ -209,7 +219,7 @@ export const Carousel: FC<TCarouselProps> = ({ images, id }) => {
         }
       </InnerCarousel>
       <ArrowRight
-        onClick={ () => handleSlider('right') }
+        onClick={ () => debouncedHandleSlider('right') }
       >
         {'>'} 
       </ArrowRight>

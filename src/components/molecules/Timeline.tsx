@@ -1,6 +1,6 @@
 import { FC, HTMLAttributes } from "react"
 import styled from "styled-components"
-import { FlexBox, dimensions, device, colors, fonts } from '../../styles'
+import { FlexBox, dimensions, device, colors } from '../../styles'
 import { TExperience } from "../../utils/ExperienceInfo"
 import { Text } from "../atoms/Text"
 

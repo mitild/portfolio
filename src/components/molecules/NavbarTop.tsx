@@ -54,7 +54,7 @@ export const NavbarTop: FC = () => {
         slide={ isSliderOpen }
         src="/logo.svg"
         alt="site's logo"
-        mobile_width="120px"
+        mobile_width="180px"
         desktop_width="200px"
       />
       <IconSliderStyled slide={ isSliderOpen }  toggleSlider={ toggleSlider } />

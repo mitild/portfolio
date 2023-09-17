@@ -111,31 +111,26 @@ type TCarouselProps = HTMLAttributes<HTMLDivElement> & {
 
 export const Carousel: FC<TCarouselProps> = ({ images, id }) => {
   const [ windowWidth, setWindowWidth ] = useState<number>(window.innerWidth)
-  const [ isHovered, setIsHovered ] = useState(false)
-  const imageWidth = windowWidth > 960 ? 400 : 300
+  const [ isHovered, setIsHovered ] = useState<boolean>(false)
+  const imageWidth: number = windowWidth > 960 ? 400 : 300
   const carouselRef = useRef<HTMLDivElement>(null)
   const innerCarouselRef = useRef<HTMLDivElement>(null)
   const innerWidth: number = images.length * (imageWidth + 8)
 
-function debounce<T extends unknown[]>(
-  func: (...args: T) => void,
-  delay: number
-) {
-  let timeoutId: ReturnType<typeof setTimeout>;
+const debounce = <T extends (...args: string[]) => void>(fn: T, delay: number) => {
+  let timeoutId: ReturnType<typeof setTimeout> 
 
-  return function (this: unknown, ...args: T) {
-    clearTimeout(timeoutId);
-    timeoutId = setTimeout(() => {
-      func.apply(this, args);
-    }, delay);
-  };
+  return (...args: Parameters<T>) => {
+    clearTimeout(timeoutId)
+    timeoutId = setTimeout(() => fn(...args), delay)
+  }
 }
 
-  const handleResize = () => {
+  const handleResize: () => void = () => {
     setWindowWidth(window.innerWidth)
   }
 
-  const debouncedHandleResize = debounce(handleResize, 200)
+  const debouncedHandleResize: () => void = debounce(handleResize, 200)
 
   useEffect(() => {
     window.addEventListener('resize', debouncedHandleResize)
@@ -143,10 +138,10 @@ function debounce<T extends unknown[]>(
     return () => window.removeEventListener('resize', debouncedHandleResize)
   }, [debouncedHandleResize])
 
-  const handleSlider = (direction: string) => {
+  const handleSlider: (direction: string) => void = (direction) => {
     const carousel = innerCarouselRef!.current
-    const clientLeft = carousel!.getBoundingClientRect().left
-    const clientRight = carousel!.getBoundingClientRect().right
+    const clientLeft: number = carousel!.getBoundingClientRect().left
+    const clientRight: number = carousel!.getBoundingClientRect().right
 
     if(clientLeft > 0) {
       innerCarouselRef.current!.style.transform = `translateX(0)`
@@ -155,19 +150,20 @@ function debounce<T extends unknown[]>(
       innerCarouselRef.current!.style.transform = `translateX(0)`
     }
     if(direction === 'left' && clientLeft < 0) {
-      const newPosition = Math.min(0, clientLeft + windowWidth)
+      const newPosition: number = Math.min(0, clientLeft + windowWidth)
       innerCarouselRef.current!.style.transform = `translateX(${newPosition}px)`
       
     }
     else if(direction === 'right' && clientRight > windowWidth) {
-      const additional = windowWidth > 960 ? 300 : 200
-      const newPosition = Math.max(-innerWidth + windowWidth - additional, clientLeft - windowWidth - additional)
+      const spaceForOneImage: number = imageWidth - 98
+      const additional: number = windowWidth > 960 ? spaceForOneImage : windowWidth * 0.47
+      const newPosition: number = Math.max(-innerWidth + windowWidth - additional, clientLeft - windowWidth - additional)
       innerCarouselRef.current!.style.transform = `translateX(${newPosition}px)`
     }
 
   }
   
-  const debouncedHandleSlider = debounce(handleSlider, 200)
+  const debouncedHandleSlider: (direction: string) => void = debounce(handleSlider, 200)
   
   return (
     <CarouselContainer 
@@ -190,8 +186,6 @@ function debounce<T extends unknown[]>(
         gap="1rem" 
         justify="flex-start"
         align="start"
-        // drag="x"
-        // dragConstraints={{ left: -width, right: 0 }}
         carousel_width={ innerWidth }
       >
         { 

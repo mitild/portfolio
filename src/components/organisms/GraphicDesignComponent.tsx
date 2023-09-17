@@ -86,9 +86,9 @@ export const GraphicDesignComponent: FC = () => {
 
   return (
     <Container direction="column" gap="0" align="center" justify="center">  
-      <BlurryCircle color="primary" XPositionLaptop="-15%" YPositionLaptop="-100%"/>
+      <BlurryCircle color="secondary" XPositionLaptop="90%" YPositionLaptop="50%"/>
       <TitleWrapper direction="column" gap=".7rem" align="start" justify="space-between">
-        <Title text="Graphic Design" number="02" color={ colors.secondary } />
+        <Title text="Graphic Design" number="02" color="secondary" />
         <Subtitle 
           text={
             <>

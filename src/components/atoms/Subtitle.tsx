@@ -2,7 +2,7 @@
 import { FC } from 'react'
 import styled from 'styled-components'
 import { Text } from '../atoms/Text'
-import { FlexBox, dimensions, device, fonts, colors } from '../../styles'
+import { FlexBox, device, fonts } from '../../styles'
 
 const Container = styled(FlexBox)`
   width: 100%;

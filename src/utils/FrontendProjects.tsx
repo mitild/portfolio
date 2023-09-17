@@ -32,5 +32,16 @@ export const frontendProjects: TProjects[] = [
     link: '/',
     url: 'https://starwars-ships-jmld.netlify.app/',
     github: 'https://github.com/mitild/starwars'
+  },
+  {
+    title: 'Folio',
+    subtitle: "Juanma's land",
+    src: '/portfolio_full.png',
+    alt: "Juanma portfolio's landing page",
+    description: 'Get to knnow me better, see my projects, my experiences, softwares and technologies and contact me to make big things together. See you there!',
+    software: ['REACTJS', 'VITEJS', 'FRAMER MOTION', 'CUSTOM HOOKS', 'ESLINT', 'REACT ROUTER', 'STYLED COMPONENTS', 'FIGMA'],
+    link: '/',
+    url: '/',
+    github: 'https://github.com/mitild/portfolio'
   }
 ]

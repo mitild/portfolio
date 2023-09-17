@@ -1,6 +1,6 @@
 import React, { FC, HTMLAttributes } from "react"
 import styled from "styled-components"
-import { FlexBox, TFlexBox, fonts, device } from "../../styles"
+import { FlexBox, TFlexBox, fonts, device, colors } from "../../styles"
 
 const Container = styled(FlexBox)`
   max-width: 260px;
@@ -20,7 +20,7 @@ const TextStyled = styled.span<TTextStyled>`
   font-family: 'Neue Machina';
   font-size: ${ fonts.extra };
   font-weight: ${ fonts.bold2 };
-  color: ${({ color }) => color || 'inherit'};
+  color: ${({ color }) => color === 'secondary' ? `${ colors.secondary }` : `${ colors.primary }`};
   z-index: 2;
 
 
@@ -45,7 +45,7 @@ const TextStyled = styled.span<TTextStyled>`
 type TTitle = TFlexBox & {
   text?: string
   number?: string
-  color?: string
+  color?: 'primary' | 'secondary'
 }
 
 

@@ -12,6 +12,7 @@ const Container = styled(FlexBox)`
   width: 100%;
   /* min-height: 100vh; */
   padding: 0 ${dimensions.spacing.md};
+  position: relative;
 
   @media only ${device.Laptop} {
     margin-top: 4.5rem;
@@ -59,7 +60,8 @@ export const FrontendComponent: FC = () => {
 
   return (
     <Container direction="column" gap="0" align="center" justify="center">  
-      <BlurryCircle color="secondary"/>
+      <BlurryCircle color="secondary" YPositionLaptop="-400px"/>
+      <BlurryCircle color="primary" XPositionLaptop="-5%" YPositionLaptop="50%"/>
       <TitleWrapper direction="column" gap=".7rem" align="start" justify="space-between">
         <Title text="Frontend Development" number="01" />
         <Subtitle 

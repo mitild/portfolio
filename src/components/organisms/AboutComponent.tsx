@@ -28,10 +28,12 @@ export const AboutComponent: FC = () => {
   return (
     <SectionLayout 
       title="About Myselfie"
-      number="04"
+      number="06"
       subtitle="There is no greater reward than creating a solution on a device and seeing it being utilized by many"
       color="secondary"
       hasLink={ false }
+      space="10rem"
+      id="about"
     >
       <BlurryCircle color="secondary" XPositionLaptop="100%" YPositionLaptop="40%"/>
       <TextWrapper justify="center" align="center" gap="2rem">

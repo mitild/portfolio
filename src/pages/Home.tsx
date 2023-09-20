@@ -1,5 +1,5 @@
 import React, { FC } from "react"
-import styled from "styled-components"
+import styled, { keyframes, css } from "styled-components"
 import { HomeComponent } from "../components/organisms/HomeComponent"
 import { FrontendComponent } from "../components/organisms/FrontendComponent"
 import { FlexBox } from '../styles'
@@ -16,13 +16,16 @@ const Container = styled(FlexBox)`
   margin: 0 auto 5rem;
 `
 
-export const Home: FC = () => 
-  <Container direction="column" gap="5rem" align="center" justify="flex-start">
-    <HomeComponent />
-    <FrontendComponent />
-    <GraphicDesignComponent />
-    <SoftwareComponent />
-    <AboutComponent />
-    <ExperienceComponent />
-    <EducationComponent />
-  </Container>
+export const Home: FC = () => {
+  return (
+    <Container direction="column" gap="5rem" align="center" justify="flex-start" >
+      <HomeComponent />
+      <FrontendComponent />
+      <GraphicDesignComponent />
+      <SoftwareComponent />
+      <ExperienceComponent />
+      <EducationComponent />
+      <AboutComponent />
+    </Container>
+  )
+}

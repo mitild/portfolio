@@ -1,6 +1,6 @@
 import { FC, HTMLAttributes, useState } from "react"
 import styled from "styled-components"
-import { Link } from "react-router-dom"
+import { HashLink } from 'react-router-hash-link'
 import { dimensions, device, colors, fonts } from "../../styles"
 import { Icon } from "../atoms/Icon"
 import { Text } from "../atoms/Text"
@@ -30,7 +30,7 @@ const UlStyled = styled.ul`
   }
 `
 
-const LinkStyled = styled(Link)`
+const LinkStyled = styled(HashLink)`
   display: flex;
 	justify-content: center;
 	align-items: center;
@@ -167,10 +167,17 @@ export const SideNavbar: FC<TSideNavbar> = ({ array }) => {
     setCliked(!clicked)
   }
 
+  const scrollWithOffset = (el: HTMLElement): void => {
+    const yCoordinate = el.getBoundingClientRect().top + window.scrollY
+    const yOffset = -80
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' })
+  }
+
   const ListEl = array.map((item, index) => {
+
     return (
       <LiStyled key={ index }>  
-        <LinkStyled to={ item.link }>
+        <LinkStyled smooth to={ item.link } scroll={(el: HTMLElement)=> scrollWithOffset(el)}>
           <TextStyled>
             { item.name }
           </TextStyled>

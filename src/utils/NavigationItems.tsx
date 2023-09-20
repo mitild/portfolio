@@ -10,37 +10,37 @@ export type TNavigationItems = {
 export const NavigationItems: TNavigationItems[] = [
   {
     name: 'Frontend',
-    link: '/',
+    link: '/#frontend',
     icon: <VscCode />,
     id: 1
   },
   {
     name: 'Designs',
-    link: '/',
+    link: '/#designs',
     icon: <VscSymbolColor />,
     id: 2
   },
   {
     name: 'Software',
-    link: '/',
+    link: '/#software',
     icon: <VscTools/>,
     id: 3
   },
   {
     name: 'Experience',
-    link: '/',
+    link: '/#experience',
     icon: <VscBriefcase />,
     id: 4
   },
   {
     name: 'Education',
-    link: '/',
+    link: '/#education',
     icon: <VscMortarBoard />,
     id: 5
   },
   {
     name: 'About me',
-    link: '/',
+    link: '/#about',
     icon: <VscPerson />,
     id: 6
   },

@@ -8,13 +8,14 @@ export const EducationComponent: FC = () => {
   return (
     <SectionLayout 
       title="Education & Background"
-      number="06"
+      number="05"
       subtitle="I love knowing things. In the last 15 years, I haven't stopped studying, whether it's through self-learning or academic pursuits, and I ain’t not stopping"
-      color="secondary"
+      color="primary"
       hasLink={ false }  
+      id="education"
     >
-      <Timeline dates={ EducationInfo } color={ "secondary" } />
-      <BlurryCircle color="secondary" XPositionLaptop="100%" YPositionLaptop="40%"/>
+      <Timeline dates={ EducationInfo } color={ "primary" } />
+      <BlurryCircle color="primary" XPositionLaptop="100%" YPositionLaptop="40%"/>
     </SectionLayout> 
   )
 }

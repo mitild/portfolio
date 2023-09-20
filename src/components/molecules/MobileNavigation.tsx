@@ -1,5 +1,5 @@
 import { FC, HTMLAttributes } from 'react'
-import { Link } from 'react-router-dom'
+import { HashLink } from 'react-router-hash-link'
 import styled from 'styled-components'
 import { Button } from '../atoms/Button'
 import { Text } from '../atoms/Text'
@@ -28,7 +28,7 @@ const ButtonWrapper = styled.div`
   grid-row-gap: 0px;
 `
 
-const LinkStyled = styled(Link)`
+const LinkStyled = styled(HashLink)`
   text-decoration: none;
 `
 
@@ -38,10 +38,16 @@ type TMobileNavigation = HTMLAttributes<HTMLDivElement> & {
 
 export const MobileNavigation: FC<TMobileNavigation> = ({ array }) => {
 
+  const scrollWithOffset = (el: HTMLElement): void => {
+    const yCoordinate = el.getBoundingClientRect().top + window.scrollY
+    const yOffset = -70
+    window.scrollTo({ top: yCoordinate + yOffset, behavior: 'smooth' })
+  }
+
   const buttonElement: JSX.Element[] = array.map((item: TNavigationItems, index: number) => {
     const color = index % 2 === 0 ? '' : 'dark'
     return (
-    <LinkStyled to={item.link} key={index}>
+    <LinkStyled smooth to={item.link} scroll={(el: HTMLElement)=> scrollWithOffset(el)} key={index}>
       <Button text={item.name} theme={ color } />
     </LinkStyled>
     )

@@ -5,14 +5,21 @@ import { Subtitle } from '../atoms/Subtitle'
 import styled from 'styled-components'
 import { FlexBox, dimensions, device, colors } from '../../styles';
 
-const Container = styled(FlexBox)`
+type TFlexBoxProps = {
+  gap?: string
+  space?: string
+}
+
+const Container = styled(FlexBox)<TFlexBoxProps>`
   position: relative;
   width: 100%;
   /* min-height: 100vh; */
+  margin-bottom: ${({ space }) => space ? space : '2rem' };
   padding: 0 ${dimensions.spacing.md};
+  gap: ${({ gap }) => gap ? gap : '2rem'};
 
   @media only ${device.Laptop} {
-    margin-top: 4.5rem;
+    margin-bottom: ${({ space }) => space ? space : '5rem' };
     padding: 0;
   }
 `
@@ -52,11 +59,14 @@ type TSectionLayoutProps = {
   linkText?: string
   hasLink?: boolean
   children: JSX.Element | JSX.Element[]
+  gap?: string
+  space?: string
+  id: string
 }
 
-export const SectionLayout: FC<TSectionLayoutProps> = ({ children, title, subtitle, number, color, link, linkText, hasLink }) => {
+export const SectionLayout: FC<TSectionLayoutProps> = ({ children, title, subtitle, number, color, link, linkText, hasLink, gap, space, id }) => {
   return (
-    <Container justify="center" align="center" gap="2rem">
+    <Container justify="center" align="center" gap={ gap } space={ space } id={ id }>
       <TitleWrapper direction="column" gap=".7rem" align="start" justify="space-between">
         <Title text={ title } number={ number } color={ color } />
         <Subtitle 

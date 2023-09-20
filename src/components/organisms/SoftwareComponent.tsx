@@ -1,34 +1,35 @@
 import { FC } from "react"
-import styled from "styled-components"
+import styled, { keyframes, css } from "styled-components"
 import {FlexBox, dimensions, device, colors } from '../../styles'
-import { Title } from "../atoms/Title"
-import {Subtitle} from '../atoms/Subtitle';
 import { BlurryCircle } from "../atoms/BlurryCircle"
 import { RoundBoxTitle } from "../atoms/RoundBoxTitle"
 import { Software } from "../../utils/Software"
+import { SectionLayout } from '../molecules/SectionLayout'
+import { useIntersection } from '../../hooks/useObserver'
 
-const Container = styled(FlexBox)`
-  position: relative;
-  width: 100%;
-  /* min-height: 100vh; */
-  padding: 0 ${dimensions.spacing.md};
+const Entrance = keyframes`
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
 
-  @media only ${device.Laptop} {
-    margin-top: 4.5rem;
-    padding: 0;
-    justify-content: center;
-    align-items: center;
+  to {
+    transform: translateX(0);
+    opacity: 1;
   }
 `
+type TMainContainer = {
+  $is_visible: string
+}
 
-const TitleWrapper = styled(FlexBox)`
+const MainContainer = styled(FlexBox)<TMainContainer>`
   width: 100%;
-  margin-bottom: ${dimensions.spacing.md};
+  transition: all .3s ease;
+  opacity: 0;
+  animation: ${({$is_visible}) => $is_visible === 'true' ? css`${ Entrance } 1s ease-in-out forwards` : 'none'};
 
-  @media only ${device.Tablet} {
-    flex-direction: row;
-    align-items: center;
-    margin-bottom: ${dimensions.spacing.xl};
+  @media only ${ device.Tablet }{
+    align-items: center
   }
 `
 
@@ -84,40 +85,42 @@ export const SoftwareComponent: FC = () => {
       )
     )
   } 
+  const [ isIntersecting, ref ] = useIntersection()
 
   return (
-    <Container justify="flex-start" align="stretch" gap="2rem">
-      <TitleWrapper direction="column" gap=".7rem" align="start" justify="space-between">
-        <Title text="Software Stack" number='03' />
-        <Subtitle 
-          text={
-            <>
-              Armed to the teeth with the latest technologies, I am ready to take on any challenge. 
-            </>
-          }
-          color="primary" />
-      </TitleWrapper>
+    <SectionLayout 
+      title="Software Stack"
+      number="03"
+      subtitle="Armed to the teeth with the latest technologies, I am ready to take on any challenge."
+      color="primary"
+      hasLink={ false }  
+      id="software"
+    >
       <BlurryCircle color="primary" XPositionLaptop="-15%" YPositionLaptop="50%" Xposition="-20%" Yposition="50%" />
-      <FlexBox justify="flex-start" align="start" gap="1rem">
-        <RoundBoxTitle title="I design with" width="200px" height="30px" borderRadius="5rem" />
+      <MainContainer align="stretch" gap="2rem" ref={ ref } $is_visible={isIntersecting.toString()}>
+
+        <FlexBox justify="flex-start" align="start" gap="1rem">
+          <RoundBoxTitle title="I design with" width="200px" height="30px" borderRadius="5rem" />
+            <IconsContainer>
+              { designIcons( Software.design ) }
+            </IconsContainer>
+        </FlexBox>
+
+        <FlexBox justify="flex-start" align="start" gap="1rem">
+          <RoundBoxTitle title="My React Setup" width="200px" height="30px" borderRadius="5rem" />
           <IconsContainer>
-            { designIcons( Software.design ) }
+            { designIcons( Software.frontend ) }
           </IconsContainer>
-      </FlexBox>
+        </FlexBox>
 
-      <FlexBox justify="flex-start" align="start" gap="1rem">
-        <RoundBoxTitle title="My React Setup" width="200px" height="30px" borderRadius="5rem" />
-        <IconsContainer>
-          { designIcons( Software.frontend ) }
-        </IconsContainer>
-      </FlexBox>
-
-      <FlexBox justify="flex-start" align="start" gap="1rem">
-        <RoundBoxTitle title="Backend musts" width="200px" height="30px" borderRadius="5rem" />
-        <IconsContainer>
-          { designIcons( Software.backend ) }
-        </IconsContainer>
-      </FlexBox>
-    </Container>
+        <FlexBox justify="flex-start" align="start" gap="1rem">
+          <RoundBoxTitle title="Backend musts" width="200px" height="30px" borderRadius="5rem" />
+          <IconsContainer>
+            { designIcons( Software.backend ) }
+          </IconsContainer>
+        </FlexBox>
+      </MainContainer>
+      
+    </SectionLayout>
   )
 }

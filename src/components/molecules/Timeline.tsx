@@ -1,4 +1,4 @@
-import { FC, HTMLAttributes } from "react"
+import { FC, Fragment, HTMLAttributes } from "react"
 import styled from "styled-components"
 import { FlexBox, dimensions, device, colors } from '../../styles'
 import { TExperience } from "../../utils/ExperienceInfo"
@@ -143,8 +143,8 @@ export const Timeline: FC<TTimeline> = ({ dates, color }) => {
     const bgColor: string = index % 2 === 0 ? "dark" : "light"
     const fontSize: number = place.length < 27 ? 1 : .8
     return (
-      <>
-        <LiWrapper key={ index } bgColor={ bgColor } >
+      <Fragment key={ index } >
+        <LiWrapper bgColor={ bgColor } >
           <LiStyled data-date={ year } dot_color={ color! }>
             <Text color="white" fontSize= { `${ fontSize }rem` }>{ place }</Text>
             {
@@ -152,9 +152,9 @@ export const Timeline: FC<TTimeline> = ({ dates, color }) => {
               <Text color={ color === 'primary' ? colors.primary : colors.secondary } fontSize=".8rem" >CURRENT</Text>
             }
           </LiStyled>
-        <ImgStyled src={ icon } alt={ alt } width="50px" svg_color={ color! } />
+          <ImgStyled src={ icon } alt={ alt } width="50px" svg_color={ color! } />
         </LiWrapper>
-      </>
+      </Fragment>
     )
   })
   return (

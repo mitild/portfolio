@@ -4,9 +4,10 @@ import { dimensions, device, colors, fonts } from '../../styles'
 import { BlurryCircle } from "../atoms/BlurryCircle"
 import { Text } from "../atoms/Text"
 import { BrandingProjects } from "../../utils/BrandingProjects"
-import {Carousel, TImages} from '../molecules/Carousel';
+import { Carousel, TImages } from '../molecules/Carousel'
 import { DigitalContent } from "../../utils/DigitalContent"
-import {SectionLayout} from '../molecules/SectionLayout';
+import { SectionLayout } from '../molecules/SectionLayout'
+
 
 // const CardsWrapper = styled(FlexBox)`
 //   width: 100%;
@@ -65,6 +66,7 @@ export const GraphicDesignComponent: FC = () => {
         Digital Content
       </TextStyled>
       <Carousel images={ digitalContentThumbnails } id="digital" />
+    
       {/* <CardsWrapper direction="row" gap="1rem" align="center" justify="center">
       </CardsWrapper> */}
     </SectionLayout>  

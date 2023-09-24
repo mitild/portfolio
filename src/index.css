@@ -33,12 +33,15 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+    overflow-x: hidden !important;
 }
 
 body {
   overflow-x: hidden !important;
   min-width: 320px;
 }
+
+
 
 img {
   max-width: 100%;

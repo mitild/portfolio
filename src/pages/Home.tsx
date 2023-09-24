@@ -8,6 +8,7 @@ import { SoftwareComponent } from "../components/organisms/SoftwareComponent"
 import { AboutComponent } from "../components/organisms/AboutComponent"
 import { ExperienceComponent } from "../components/organisms/ExperienceComponent"
 import { EducationComponent } from "../components/organisms/EducationComponent"
+import "react-multi-carousel/lib/styles.css";
 
 const Container = styled(FlexBox)`
   width: 100vw;
@@ -25,7 +26,7 @@ export const Home: FC = () => {
       <SoftwareComponent />
       <ExperienceComponent />
       <EducationComponent />
-      <AboutComponent />
+      <AboutComponent />      
     </Container>
   )
 }

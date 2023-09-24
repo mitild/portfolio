@@ -2,7 +2,8 @@
 import { useState, useRef, FC, HTMLAttributes, useEffect } from "react" 
 import styled from "styled-components"
 import { motion } from "framer-motion"
-import {FlexBox, dimensions, fonts, colors, device, shadows} from '../../styles';
+import {FlexBox, dimensions, fonts, colors, device, shadows} from '../../styles'
+
 
 type TCarouselContainer = HTMLAttributes<HTMLDivElement> & {
   carousel_width: number

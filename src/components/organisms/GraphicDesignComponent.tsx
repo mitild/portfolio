@@ -4,20 +4,10 @@ import { dimensions, device, colors, fonts } from '../../styles'
 import { BlurryCircle } from "../atoms/BlurryCircle"
 import { Text } from "../atoms/Text"
 import { BrandingProjects } from "../../utils/BrandingProjects"
-import { Carousel, TImages } from '../molecules/Carousel'
+import { TImages } from '../molecules/Carousel'
 import { DigitalContent } from "../../utils/DigitalContent"
 import { SectionLayout } from '../molecules/SectionLayout'
-
-
-// const CardsWrapper = styled(FlexBox)`
-//   width: 100%;
-//   flex-direction: column;
-//   @media only ${device.Tablet} {
-//     margin-top: ${dimensions.spacing.xxl};
-//     flex-direction: row;
-//     gap: 3rem;
-//   }
-// `
+import { MCarousel } from "../molecules/MCarousel"
 
 const TextStyled = styled(Text)`
   align-self: flex-start;
@@ -61,14 +51,13 @@ export const GraphicDesignComponent: FC = () => {
       <TextStyled fontFamily="Neue Machina" fontSize={ fonts.h2 } fontWeight={ fonts.bold2 }>
         Branding & Digital Presence
       </TextStyled>
-      <Carousel images={ brandingThumbnails } id="branding" />
+      {/* <Carousel images={ brandingThumbnails } id="branding" /> */}
+      <MCarousel images={ brandingThumbnails } id="branding" />
       <TextStyled fontFamily="Neue Machina" fontSize={ fonts.h2 } fontWeight={ fonts.bold2 }>
         Digital Content
       </TextStyled>
-      <Carousel images={ digitalContentThumbnails } id="digital" />
-    
-      {/* <CardsWrapper direction="row" gap="1rem" align="center" justify="center">
-      </CardsWrapper> */}
+      {/* <Carousel images={ digitalContentThumbnails } id="digital" /> */}
+      <MCarousel images={ digitalContentThumbnails } id="digital" />
     </SectionLayout>  
   )
 }

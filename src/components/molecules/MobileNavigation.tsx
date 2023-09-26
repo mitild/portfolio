@@ -24,8 +24,8 @@ const ButtonWrapper = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  grid-column-gap: .2rem;
+  grid-row-gap: .2rem;
 `
 
 const LinkStyled = styled(HashLink)`

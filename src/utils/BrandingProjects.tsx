@@ -1,6 +1,6 @@
 type TImages = ( { thumbnail: string } | string )[];
 
-type TBrandings = {
+export type TBrandings = {
   brand: string
   description: string
   behance: string

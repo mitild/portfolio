@@ -8,13 +8,17 @@ import { SectionLayout } from '../molecules/SectionLayout'
 import { useIntersection } from '../../hooks/useObserver'
 
 const Entrance = keyframes`
-  from {
-    transform: translateX(-100%);
+  0% {
+    transform: translateY(100%);
     opacity: 0;
   }
 
-  to {
-    transform: translateX(0);
+  50% {
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
     opacity: 1;
   }
 `
@@ -26,7 +30,7 @@ const MainContainer = styled(FlexBox)<TMainContainer>`
   width: 100%;
   transition: all .3s ease;
   opacity: 0;
-  animation: ${({$is_visible}) => $is_visible === 'true' ? css`${ Entrance } 1s ease-in-out forwards` : 'none'};
+  animation: ${({$is_visible}) => $is_visible === 'true' ? css`${ Entrance } 0.5s cubic-bezier(0.250, 0.460, 0.450, 0.940) both` : 'none'};
 
   @media only ${ device.Tablet }{
     align-items: center

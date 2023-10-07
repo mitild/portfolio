@@ -1,6 +1,6 @@
 import { FC, HTMLAttributes } from 'react'
 import styled, { keyframes, css } from 'styled-components'
-import { FlexBox, dimensions, colors, fonts, shadows } from '../../styles'
+import { FlexBox, dimensions, colors, fonts, shadows, device } from '../../styles'
 
 type Tcontainer = HTMLAttributes<HTMLDivElement> & {
   color?: 'primary' | 'secondary'
@@ -17,11 +17,15 @@ const Container = styled(FlexBox)<Tcontainer>`
   position: relative;
   user-select: none;
   font-family: 'Neue Machina';
-  font-size: 1.4rem;
+  font-size: 1rem;
   font-weight: ${fonts.medium};
   text-transform: uppercase;
   text-shadow: ${shadows.xs};
   transform: ${ ({ rotate }) => `rotate(${ rotate }deg)` };
+
+  @media only ${device.Laptop} {
+    font-size: 1.4rem;
+  }
 `
 
 const tickerLeft = keyframes`

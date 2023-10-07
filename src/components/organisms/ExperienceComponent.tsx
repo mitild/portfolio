@@ -2,7 +2,7 @@ import {FC} from 'react'
 import { SectionLayout } from '../molecules/SectionLayout'
 import { Timeline } from '../molecules/Timeline'
 import { ExperienceInfo } from '../../utils/ExperienceInfo'
-import {BlurryCircle} from '../atoms/BlurryCircle';
+import { BlurryCircle } from '../atoms/BlurryCircle'
 
 export const ExperienceComponent: FC = () => {
   return (

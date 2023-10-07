@@ -47,7 +47,7 @@ const IconSliderStyled = styled(IconSlider)`
 export const NavbarTop: FC = () => {
   const [ isSliderOpen, setIsSliderOpen ] = useState<boolean>(false)
 
-  const toggleSlider = () => setIsSliderOpen(!isSliderOpen)
+  const toggleSlider = () => setIsSliderOpen(prev => !prev)
   return (
     <Container direction="row" justify="space-between" align="center">
       <LogoStyled 
@@ -57,7 +57,7 @@ export const NavbarTop: FC = () => {
         mobile_width="180px"
         desktop_width="200px"
       />
-      <IconSliderStyled slide={ isSliderOpen }  toggleSlider={ toggleSlider } />
+      <IconSliderStyled slide={ isSliderOpen } toggleSlider={ toggleSlider } />
     </Container>
   )
 }

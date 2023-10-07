@@ -29,7 +29,9 @@ export const GraphicDesignComponent: FC = () => {
     const brandName = project.brand
     return {
       src: thumbnailObject!.thumbnail,
-      name: brandName
+      name: brandName,
+      description: project.description,
+      page: true
     }
   })
 
@@ -52,12 +54,12 @@ export const GraphicDesignComponent: FC = () => {
         Branding & Digital Presence
       </TextStyled>
       {/* <Carousel images={ brandingThumbnails } id="branding" /> */}
-      <MCarousel images={ brandingThumbnails } id="branding" />
+      <MCarousel images={ brandingThumbnails } />
       <TextStyled fontFamily="Neue Machina" fontSize={ fonts.h2 } fontWeight={ fonts.bold2 }>
         Digital Content
       </TextStyled>
       {/* <Carousel images={ digitalContentThumbnails } id="digital" /> */}
-      <MCarousel images={ digitalContentThumbnails } id="digital" />
+      <MCarousel images={ digitalContentThumbnails } />
     </SectionLayout>  
   )
 }

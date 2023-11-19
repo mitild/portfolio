@@ -1,5 +1,5 @@
-import React, { FC } from "react"
-import styled, { keyframes, css } from "styled-components"
+import { FC } from "react"
+import styled from "styled-components"
 import { HomeComponent } from "../components/organisms/HomeComponent"
 import { FrontendComponent } from "../components/organisms/FrontendComponent"
 import { FlexBox } from '../styles'
@@ -8,13 +8,13 @@ import { SoftwareComponent } from "../components/organisms/SoftwareComponent"
 import { AboutComponent } from "../components/organisms/AboutComponent"
 import { ExperienceComponent } from "../components/organisms/ExperienceComponent"
 import { EducationComponent } from "../components/organisms/EducationComponent"
-import "react-multi-carousel/lib/styles.css";
+import "react-multi-carousel/lib/styles.css"
 
 const Container = styled(FlexBox)`
   width: 100vw;
   max-width: 1300px;
   min-height: 100vh;
-  margin: 0 auto 5rem;
+  margin: 0 auto;
 `
 
 export const Home: FC = () => {
@@ -26,7 +26,7 @@ export const Home: FC = () => {
       <SoftwareComponent />
       <ExperienceComponent />
       <EducationComponent />
-      <AboutComponent />      
+      <AboutComponent />   
     </Container>
   )
 }

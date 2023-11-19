@@ -115,11 +115,15 @@ const responsive = {
 }
 
 export type TImages = {
-  src: string;
-  name?: string;
-  alt?: string;
-  page?: string;
-  description?: string;
+  src: string
+  name?: string
+  alt?: string
+  page?: boolean
+  slogan?: string
+  description?: string
+  behance?: string
+  instagram?: string
+  images?: string[]
 }[]
 
 type TCarouselProps = HTMLAttributes<HTMLDivElement> & {
@@ -184,8 +188,8 @@ export const MCarousel: FC<TCarouselProps> = ({ images }) => {
     setAlt(alte!)
   }
 
-  const items: ReactNode[] = images.map(({ src, name, alt, page, description }, index) => {
-    const nameAsParam = name!.split(' ').join('-');
+  const items: ReactNode[] = images.map(({ src, name, alt, page, description, slogan, images, instagram, behance }, index) => {
+    const nameAsParam = name!.split(' ').join('_')
 
     return (
       <ItemWrapper key={ index }>
@@ -202,10 +206,11 @@ export const MCarousel: FC<TCarouselProps> = ({ images }) => {
         {
           page
           ?
-          <LinkStyled to={ `designs/${ nameAsParam }` } state={{ url: src, name: name, description }}>
+          <LinkStyled to={ `designs/${ nameAsParam }` } state={{ url: src, name, description, slogan, images, instagram, behance }}>
             <CarouselItem  
+              onClick={ ()=> window.scrollTo({ top: 0 })}
               src={ src } 
-              alt={ alt }  
+              alt={ name }  
               onMouseEnter={() => setIsHovered(true)}
               onMouseLeave={() => setIsHovered(false)}
             />

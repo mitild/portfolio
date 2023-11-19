@@ -34,15 +34,19 @@
   -moz-osx-font-smoothing: grayscale;
   /* -webkit-text-size-adjust: 100%; */
   overflow-x: hidden !important;
-  scroll-behavior: smooth;
+  scroll-behavior: smooth !important;
+}
+
+@media (max-width: 600px) {
+  :root {
+    scroll-behavior: unset !important;
+  }
 }
 
 body {
   overflow-x: hidden !important;
   min-width: 320px;
 }
-
-
 
 img {
   max-width: 100%;

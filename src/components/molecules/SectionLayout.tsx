@@ -13,7 +13,7 @@ type TFlexBoxProps = {
 const Container = styled(FlexBox)<TFlexBoxProps>`
   position: relative;
   width: 100%;
-  /* min-height: 100vh; */
+  /* min-height: 100svh; */
   margin-bottom: ${({ space }) => space ? space : '2rem' };
   padding: 0 ${dimensions.spacing.md};
   gap: ${({ gap }) => gap ? gap : '2rem'};

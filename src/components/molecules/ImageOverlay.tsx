@@ -3,21 +3,6 @@ import styled, { keyframes, css } from 'styled-components'
 import { FlexBox, Entrance } from '../../styles'
 import { Ticker } from './Ticker'
 
-// export const Entrance = keyframes`
-// 0% {
-//     opacity: 0;
-//     transform-origin: 50% 50%;
-//     transform: scale(2, 2);
-//     filter: blur(90px);
-//   }
-//   100% {
-//     opacity: 1;
-//     transform-origin: 50% 50%;
-//     transform: scale(1, 1);
-//     filter: blur(0px);
-//   }
-// `
-
 const Exit = keyframes`
   0% {
     opacity: 1;
@@ -64,23 +49,22 @@ const ImageStyled = styled.img`
   background: transparent;
 `
 
-const CloseButton = styled.button`
-  position: absolute;
-  top: 2rem;
-  right: 2rem;
-  width: 2rem;
-  height: 2rem;
-  border: none;
-  background: transparent;
-  z-index: 999999;
-  cursor: pointer;
-  transition: all .3s ease-in-out;
+// const CloseButton = styled.button`
+//   position: absolute;
+//   top: 2rem;
+//   right: 2rem;
+//   width: 2rem;
+//   height: 2rem;
+//   border: none;
+//   background: transparent;
+//   z-index: 999999;
+//   cursor: pointer;
+//   transition: all .3s ease-in-out;
 
-  &:hover {
-    transform: scale(1.1);
-  }
-`
-
+//   &:hover {
+//     transform: scale(1.1);
+//   }
+// `
 
 type TImageOverlay = {
   src?: string
@@ -89,7 +73,7 @@ type TImageOverlay = {
   overlay?: boolean
 }
 
-export const ImageOverlay: FC<TImageOverlay> = ({ src, alt, handleClick, overlay }) => {
+export const ImageOverlay: FC<TImageOverlay> = ({ src, alt, overlay }) => {
   const array: string[] = [ alt!, alt!, alt!, alt!, alt! ]
 
   return (

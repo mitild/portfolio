@@ -177,7 +177,7 @@ export const SideNavbar: FC<TSideNavbar> = ({ array }) => {
 
     return (
       <LiStyled key={ index }>  
-        <LinkStyled smooth to={ item.link } scroll={(el: HTMLElement)=> scrollWithOffset(el)}>
+        <LinkStyled to={ item.link } scroll={(el: HTMLElement)=> scrollWithOffset(el)}>
           <TextStyled>
             { item.name }
           </TextStyled>

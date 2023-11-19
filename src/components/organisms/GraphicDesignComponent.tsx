@@ -24,13 +24,15 @@ const TextStyled = styled(Text)`
 
 export const GraphicDesignComponent: FC = () => {
 
-  const brandingThumbnails: TImages = BrandingProjects.map(project => {
-    const thumbnailObject = project.images.find(image => typeof image === 'object') as { thumbnail: string }
-    const brandName = project.brand
+  const brandingThumbnails: TImages = BrandingProjects.map(({ brand, slogan, description, thumbnail, images, behance, instagram }) => {
     return {
-      src: thumbnailObject!.thumbnail,
-      name: brandName,
-      description: project.description,
+      name: brand,
+      slogan: slogan,
+      description: description,
+      src: thumbnail,
+      images: images,
+      behance: behance,
+      instagram: instagram,
       page: true
     }
   })

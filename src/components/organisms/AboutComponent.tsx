@@ -46,7 +46,7 @@ export const AboutComponent: FC = () => {
       </TextWrapper>  
       <RotatedContainer direction="row" align="center" justify="flex-start" gap=".5rem">
         <Text color={ colors.secondary } fontSize={ fonts.h2 } sizeLaptop={ fonts.h1 } fontFamily="Neue Machina">
-          In mi free time 
+          In my free time 
         </Text>
           <img src={ index } alt='Index pointing down'/>
       </RotatedContainer>

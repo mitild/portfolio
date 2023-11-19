@@ -12,6 +12,7 @@ const BlurryCircleStyled = styled.span<TBlurryCircle>`
   opacity: .4;
   background: ${({ color }) => color === 'primary' ? `linear-gradient(180deg, ${ colors.primary} 0%, rgba(28, 32, 35, 0.63) 100%)` : `linear-gradient(180deg, ${ colors.secondary } 0%, rgba(28, 32, 35, 0.63) 100%)`};
   filter: blur(104px);
+  backdrop-filter: blur(104px);
   z-index: -1;
 
   @media only ${device.Tablet} {

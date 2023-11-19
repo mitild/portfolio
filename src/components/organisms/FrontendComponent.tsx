@@ -17,7 +17,13 @@ const CardsWrapper = styled(FlexBox)`
 `
 
 export const FrontendComponent: FC = () => {
-  const cardElements = frontendProjects.map((project, index) => <Card key={index} {...project} />)
+  const cardElements = frontendProjects.map((project, index) => {
+    const { title } = project
+    const nameAsParam = title!.split(' ').join('_')
+    return (
+      <Card { ...project } route={`frontend/${nameAsParam}`} key={ index } />
+    )
+  })
 
   return (
     <SectionLayout 
@@ -30,7 +36,7 @@ export const FrontendComponent: FC = () => {
       linkText='here'
       id="frontend"
     >
-      <BlurryCircle color="secondary" YPositionLaptop="-400px"/>
+      <BlurryCircle color="secondary" YPositionLaptop="-400px" XPositionLaptop="99%"/>
       <BlurryCircle color="primary" XPositionLaptop="-5%" YPositionLaptop="50%"/>
       <CardsWrapper direction="row" gap="1rem" align="center" justify="center">
         { cardElements }

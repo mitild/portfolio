@@ -47,7 +47,7 @@ export const MobileNavigation: FC<TMobileNavigation> = ({ array }) => {
   const buttonElement: JSX.Element[] = array.map((item: TNavigationItems, index: number) => {
     const color = index % 2 === 0 ? '' : 'dark'
     return (
-    <LinkStyled smooth to={item.link} scroll={(el: HTMLElement)=> scrollWithOffset(el)} key={index}>
+    <LinkStyled to={item.link} scroll={(el: HTMLElement)=> scrollWithOffset(el)} key={index}>
       <Button text={item.name} theme={ color } />
     </LinkStyled>
     )

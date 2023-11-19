@@ -23,6 +23,7 @@ const Container = styled(FlexBox)`
   top: ${dimensions.spacing.lg};
   width: 100%;
   padding: 0 ${dimensions.spacing.md};
+  z-index: 999;
 
   @media only ${device.Desktop} {
     max-width: 1300px;

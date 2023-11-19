@@ -11,7 +11,7 @@ export const ButtonStyled = styled.button<TButton>`
   cursor: pointer;
   background: ${({ theme }) => theme === 'dark' ? `${colors.black.black3}` : `${colors.primary}` };
   color: ${({ theme }) => theme === 'dark' ? `${colors.white}` : `${colors.black.black2}` };
-  border: ${({ theme }) => theme === 'dark' ? `1px solid ${colors.black.black3}` : `1px solid ${colors.primary}` };
+  border: ${({ theme }) => theme === 'dark' ? `2px solid ${colors.secondary}` : `1px solid ${colors.primary}` };
   border-radius: ${ dimensions.borderRadius.round };
   text-shadow: ${ shadows.xs };
   transition: all .3s ease;

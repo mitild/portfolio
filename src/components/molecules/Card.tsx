@@ -51,7 +51,7 @@ const CardHeader = styled(FlexBox)`
 `
 
 const LinkStyled = styled(Link)`
- text-decoration: none;
+  text-decoration: none;
 `
 
 const CardButton = styled(Link)`
@@ -100,31 +100,25 @@ const CardIcons = styled(FlexBox)`
   font-size: ${ fonts.base };
 `
 
-type TCard = HTMLAttributes<HTMLDivElement> & TProjects
+type TCard = HTMLAttributes<HTMLDivElement> & TProjects & {
+  route: string
+}
 
-export const Card: FC<TCard> = ({
-  title,
-  subtitle,
-  src,
-  alt,
-  description,
-  software,
-  link,
-  url,
-  github
-}) => {
+export const Card: FC<TCard> = (props) => {
 
-  const navigate = useNavigate()
+  const { title, subtitle, src, alt, description, software, link, url, github, route } = props
 
   return (
-    <Container align='end' justify='flex-end' gap='.5rem' onClick={() => navigate(link)}>
+    <Container align='end' justify='flex-end' gap='.5rem'>
         <CardImgWrapper>
-          <Link to={ link }>
+          <Link to={ route } state={{ ...props }} onClick={ ()=> window.scrollTo({ top: 0 })} >
           <CardImgStyled src={ src } alt={ alt } />
           </Link>
         </CardImgWrapper>
         <CardHeader direction="row" gap="0" align="center" justify="space-between">
-          <CardButton to={ link }>Read More</CardButton>
+          <CardButton to={ route } state={{ ...props }} onClick={ ()=> window.scrollTo({ top: 0 })}>
+              Read More
+          </CardButton>
           <FlexBox direction="column" gap="0" align="end" justify="center">
             <LinkStyled to={ link }>
               <CardTitle 
@@ -152,10 +146,10 @@ export const Card: FC<TCard> = ({
             { software.join(' - ') }
           </Text>
         <CardIcons direction="row" gap="1rem" align="center" justify="flex-end">
-          <Link to={ github }>
+          <Link to={ github } target="_blank">
             <Icon icon={ <VscGithubInverted /> } color={ colors.primary } font_size={ 1.5 } />
           </Link>
-          <Link to={ url }>
+          <Link to={ url } target="_blank">
             <Icon icon={ <MdOpenInNew /> } color={ colors.primary } font_size={ 1.5 } />
           </Link>
         </CardIcons>

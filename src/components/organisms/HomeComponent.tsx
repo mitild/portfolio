@@ -21,6 +21,7 @@ const Container = styled(FlexBox)`
   background: url(${myImg}) no-repeat;
   background-size: 75%;
   background-position: 175% 25%;
+  scroll-snap-align: start !important;
 
   &::before {
     content: '';
@@ -154,7 +155,7 @@ export const HomeComponent: FC = () =>
               <Text color={ colors.white} fontSize={ fonts.h2 } sizeLaptop={ fonts.big}>
                 Hi! I'm 
               </Text>
-              <ImgStyled src={ thumUp } alt="thum up" />
+              <ImgStyled src={ thumUp } alt="thumb up" />
             </FlexBox>
             <MiddleText color={ colors.white} fontSize={ fonts.display } fontWeight={ fonts.bold1 } sizeLaptop={ fonts.ultraDisplay}>
               Juanma,
